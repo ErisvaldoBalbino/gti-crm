@@ -1,0 +1,101 @@
+ID;Nome;CPF;Dias_Sem_Comprar;Total_Gasto_Mes;Categoria_Mais_Comprada;Quantidade_Compras
+1;Lucas Silva;123.456.789-00;25;850.5;Mercearia;9
+2;Ana Santos;234.567.890-11;3;1200.0;Vegetariano e Saudavel;13
+3;Mateus Oliveira;345.678.901-22;14;450.2;Fraldas e Infantil;5
+4;Beatriz Costa;456.789.012-33;22;920.0;Hortifruti;10
+5;Thiago Rodrigues;567.890.123-44;1;350.0;Bebidas e Cervejas;4
+6;Larissa Almeida;678.901.234-55;15;510.8;Fraldas e Infantil;6
+7;Gabriel Nascimento;789.012.345-66;35;780.0;Limpeza;8
+8;Mariana Sousa;890.123.456-77;5;150.0;Padaria;2
+9;Felipe Lima;901.234.567-88;28;640.1;Acougue e Peixaria;7
+10;Juliana Carvalho;012.345.678-99;13;480.0;Fraldas e Infantil;5
+11;Gustavo Rocha;123.987.654-32;4;890.0;Vegetariano e Saudavel;9
+12;Camila Araujo;234.876.543-21;21;1100.5;Mercearia;12
+13;Rafael Melo;345.765.432-10;14;530.0;Fraldas e Infantil;6
+14;Fernanda Gomes;456.654.321-09;42;720.0;Feriados e Doces;8
+15;Leonardo Cardoso;567.543.210-98;2;410.0;Acougue e Peixaria;5
+16;Aline Martins;678.432.109-87;15;495.0;Fraldas e Infantil;5
+17;Rodrigo Ferreira;789.321.098-76;26;950.0;Bebidas e Cervejas;10
+18;Amanda Barbosa;890.210.987-65;6;220.0;Hortifruti;3
+19;Bruno Ribeiro;901.109.876-54;31;600.0;Mercearia;7
+20;Isabela Pinto;012.012.345-43;13;560.2;Fraldas e Infantil;6
+21;Vinicius Ramos;111.222.333-44;8;130.0;Padaria;2
+22;Leticia Vieira;222.333.444-55;24;810.0;Limpeza;9
+23;Diego Castro;333.444.555-66;14;520.0;Fraldas e Infantil;6
+24;Caroline Rocha;444.555.666-77;33;1050.0;Vegetariano e Saudavel;11
+25;Arthur Mendes;555.666.777-88;3;390.0;Mercearia;4
+26;Bianca Nunes;666.777.888-99;15;480.9;Fraldas e Infantil;5
+27;Pedro Souza;777.888.999-00;29;750.0;Acougue e Peixaria;8
+28;Vanessa Dias;888.999.000-11;7;280.0;Hortifruti;3
+29;Murilo Cunha;999.000.111-22;27;880.4;Mercearia;9
+30;Larissa Neves;000.111.222-33;14;515.0;Fraldas e Infantil;6
+31;Andre Santos;123.234.345-45;5;340.0;Bebidas e Cervejas;4
+32;Jessica Cruz;234.345.456-56;23;990.0;Limpeza;10
+33;Danilo Reis;345.456.567-67;13;540.0;Fraldas e Infantil;6
+34;Barbara Lima;456.567.678-78;38;620.0;Padaria;7
+35;Igor Moreira;567.678.789-89;2;460.0;Acougue e Peixaria;5
+36;Camila Viana;678.789.890-90;15;500.0;Fraldas e Infantil;6
+37;Douglas Teixeira;789.890.901-01;22;1250.0;Vegetariano e Saudavel;13
+38;Patricia Guedes;890.901.012-12;9;190.0;Hortifruti;2
+39;Renan Freitas;901.012.012-23;45;580.0;Mercearia;6
+40;Natalia Alves;012.023.034-34;14;535.0;Fraldas e Infantil;6
+41;Caio Borges;121.314.151-16;4;420.0;Bebidas e Cervejas;5
+42;Gabriela Marques;232.425.262-27;25;790.0;Limgue e Peixaria;8
+43;Eduardo Correia;343.536.373-38;15;490.0;Fraldas e Infantil;5
+44;Priscila Farias;444.545.646-47;31;860.0;Vegetariano e Saudavel;9
+45;Samuel Cavalcanti;555.656.757-58;1;310.0;Mercearia;4
+46;Tatiana Macedo;666.767.868-69;13;525.0;Fraldas e Infantil;6
+47;Vitor Peixoto;777.878.979-70;28;910.0;Acougue e Peixaria;10
+48;Helena Antunes;888.989.080-81;6;240.0;Hortifruti;3
+49;Hugo Assis;999.090.191-92;36;670.0;Limpeza;7
+50;Bruna Guimaraes;000.101.202-03;14;505.0;Fraldas e Infantil;6
+51;Alexandre Carvalho;102.203.304-45;3;1350.0;Mercearia;14
+52;Debora Bernardes;203.304.405-56;12;210.0;Padaria;3
+53;Marcos Pires;304.405.506-67;26;830.0;Acougue e Peixaria;9
+54;Sabrina Meireles;405.406.507-78;8;400.0;Hortifruti;5
+55;Wesley Braga;506.507.608-89;18;620.0;Bebidas e Cervejas;7
+56;Leandro Fontes;607.608.709-90;2;1150.0;Vegetariano e Saudavel;12
+57;Tania Sales;708.709.800-01;22;940.0;Limpeza;10
+58;Ronaldo Paz;808.809.901-12;11;330.0;Mercearia;4
+59;Milena Porto;909.910.012-23;5;270.0;Padaria;3
+60;Fabio Silveira;010.112.123-34;34;700.0;Acougue e Peixaria;8
+61;Cintia Dorneles;112.223.334-45;14;550.0;Fraldas e Infantil;6
+62;Marcelo Xavier;223.334.445-56;3;410.0;Mercearia;5
+63;Renata Campos;334.445.556-67;15;485.0;Fraldas e Infantil;5
+64;Otavio Lins;445.556.667-78;27;820.0;Bebidas e Cervejas;9
+65;Larissa Duarte;556.667.778-89;7;190.0;Hortifruti;2
+66;Felipe Nazario;667.778.889-90;13;510.0;Fraldas e Infantil;6
+67;Gisele Toledo;778.889.990-01;32;640.0;Limpeza;7
+68;Sandro Malta;889.990.001-12;4;1280.0;Vegetariano e Saudavel;13
+69;Viviane Rocha;990.001.112-23;14;530.0;Fraldas e Infantil;6
+70;Cesar Valente;001.112.223-34;24;760.0;Mercearia;8
+71;Daniela Paiva;113.224.335-46;8;310.0;Padaria;4
+72;Marisa Franco;224.335.446-57;15;495.0;Fraldas e Infantil;5
+73;Yago Frota;335.446.557-68;21;900.0;Acougue e Peixaria;10
+74;Erika Lourenco;446.557.668-79;2;250.0;Hortifruti;3
+75;Murilo Rossi;557.668.778-90;13;520.0;Fraldas e Infantil;6
+76;Katia Abreu;668.778.889-01;37;610.0;Limpeza;7
+77;Moacir Neto;779.880.991-12;6;380.0;Bebidas e Cervejas;4
+78;Thais Villa;880.991.002-23;14;540.0;Fraldas e Infantil;6
+79;Samuel Ortiz;991.002.113-34;30;850.0;Mercearia;9
+80;Flavia Junqueira;002.113.224-45;4;1420.0;Vegetariano e Saudavel;15
+81;Reinaldo Filho;122.233.344-55;15;505.0;Fraldas e Infantil;6
+82;Elisa Guerra;233.344.455-66;25;730.0;Padaria;8
+83;Denilson Aguiar;344.455.566-77;14;512.0;Fraldas e Infantil;6
+84;Morgana Luz;455.566.677-88;39;680.0;Limpeza;7
+85;Erick Nogueira;566.677.788-99;1;430.0;Acougue e Peixaria;5
+86;Regina Falcao;677.788.889-00;13;528.0;Fraldas e Infantil;6
+87;Nelson Jobim;788.889.990-11;28;915.0;Mercearia;10
+88;Marta Suplicy;889.990.001-22;7;290.0;Hortifruti;3
+89;Silvio Santos;990.001.112-33;15;490.0;Fraldas e Infantil;5
+90;Fausto Silva;001.112.223-44;41;1100.0;Bebidas e Cervejas;12
+91;Claudia Raia;114.225.336-47;10;1350.0;Vegetariano e Saudavel;14
+92;Tony Ramos;225.336.447-58;14;518.0;Fraldas e Infantil;6
+93;Gloria Pires;336.447.558-69;23;840.0;Mercearia;9
+94;Lázaro Ramos;447.558.669-80;3;320.0;Padaria;4
+95;Taís Araújo;558.669.770-91;13;532.0;Fraldas e Infantil;6
+96;Reynaldo G.;669.770.881-02;26;795.0;Acougue e Peixaria;8
+97;Giovanna A.;770.881.992-13;6;215.0;Hortifruti;3
+98;Rodrigo S.;881.992.003-24;15;501.0;Fraldas e Infantil;6
+99;Fernanda M.;992.003.114-35;33;660.0;Limpeza;7
+100;Lima Duarte;003.114.225-46;14;545.0;Fraldas e Infantil;6

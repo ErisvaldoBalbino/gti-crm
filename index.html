@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM SuperDev - O Supermercado Preditivo</title>
+    <meta name="description" content="Módulo de CRM Automatizado do SuperDev: painel de fidelização, análises de categoria e simulador de campanhas preditivas.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- Conteúdo Central -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-title">
+                    <h1>CRM SuperDev</h1>
+                </div>
+                <!-- Nav Tabs Principal -->
+                <nav class="main-nav-tabs" role="navigation" aria-label="Navegação principal">
+                    <button class="main-tab-btn active" id="nav-dashboard" onclick="alternarAba('dashboard', this)">
+                        <span class="nav-icon">📋</span> Dashboard
+                    </button>
+                    <button class="main-tab-btn" id="nav-analytics" onclick="alternarAba('analytics', this)">
+                        <span class="nav-icon">📊</span> Análises
+                    </button>
+                </nav>
+            </header>
+
+            <!-- =============================== -->
+            <!-- ABA 1: DASHBOARD (padrão)       -->
+            <!-- =============================== -->
+            <div id="view-dashboard">
+
+                <!-- KPIs -->
+                <section class="kpi-grid">
+                    <!-- KPI 1 -->
+                    <div class="kpi-card">
+                        <span class="kpi-title">Base de Clientes</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value" id="kpi-total-clientes">100</span>
+                        </div>
+                        <div class="kpi-decoration bg-primary"></div>
+                    </div>
+                    <!-- KPI 2 -->
+                    <div class="kpi-card" onclick="document.getElementById('tab-ex-fiel').click()" style="cursor: pointer;">
+                        <span class="kpi-title">Clientes Ex-Fiéis</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value text-danger" id="kpi-ex-fiel">0</span>
+                        </div>
+                        <div class="kpi-decoration bg-danger"></div>
+                    </div>
+                    <!-- KPI 3 -->
+                    <div class="kpi-card" onclick="document.getElementById('tab-veg').click()" style="cursor: pointer;">
+                        <span class="kpi-title">Público Vegetariano</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value text-warning" id="kpi-vegetariano">0</span>
+                        </div>
+                        <div class="kpi-decoration bg-warning"></div>
+                    </div>
+                    <!-- KPI 4 -->
+                    <div class="kpi-card" onclick="document.getElementById('tab-pai').click()" style="cursor: pointer;">
+                        <span class="kpi-title">Público Infantil</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value text-info" id="kpi-fraldas">0</span>
+                        </div>
+                        <div class="kpi-decoration bg-info"></div>
+                    </div>
+                    <!-- KPI 5 -->
+                    <div class="kpi-card" onclick="document.getElementById('tab-vip').click()" style="cursor: pointer;">
+                        <span class="kpi-title">Clientes Fiéis</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value text-success" id="kpi-vips">0</span>
+                        </div>
+                        <div class="kpi-decoration bg-success"></div>
+                    </div>
+                </section>
+
+                <!-- Main Interactive Workspace -->
+                <div class="dashboard-grid">
+                    <!-- Coluna da Tabela de Clientes -->
+                    <section class="section-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Lista de Clientes Cadastrados</span>
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted)">Clique na linha do cliente para ver o histórico</span>
+                        </div>
+
+                        <!-- Barra de Ferramentas: Filtros Rápidos & Busca -->
+                        <div class="search-filter-bar">
+                            <div class="search-wrapper">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" id="search-input" class="search-input" placeholder="Pesquisar por Nome ou CPF...">
+                            </div>
+                            <div class="filter-tabs">
+                                <button class="tab-btn active" onclick="setFiltro('todos', this)">Todos</button>
+                                <button class="tab-btn" id="tab-ex-fiel" onclick="setFiltro('ex_fiel', this)">Ex-Fiéis</button>
+                                <button class="tab-btn" id="tab-veg" onclick="setFiltro('vegetariano', this)">Vegetarianos</button>
+                                <button class="tab-btn" id="tab-pai" onclick="setFiltro('fraldas', this)">Infantil</button>
+                                <button class="tab-btn" id="tab-vip" onclick="setFiltro('vip', this)">Fiéis</button>
+                                <button class="tab-btn" onclick="setFiltro('com_risco', this)">Com Gatilho</button>
+                            </div>
+                        </div>
+
+                        <!-- Tabela -->
+                        <div class="table-container">
+                            <table class="client-table">
+                                <thead>
+                                    <tr>
+                                        <th onclick="ordenarPorCol('nome')" style="cursor: pointer; user-select: none;">Cliente <span id="sort-nome" class="sort-indicator">↕</span></th>
+                                        <th>Preferência / Produto Favorito</th>
+                                        <th onclick="ordenarPorCol('totalGastoMes')" class="text-right" style="cursor: pointer; user-select: none;">Gasto Último Mês <span id="sort-totalGastoMes" class="sort-indicator">↕</span></th>
+                                        <th onclick="ordenarPorCol('diasSemComprar')" class="text-center" style="cursor: pointer; user-select: none;">Inatividade <span id="sort-diasSemComprar" class="sort-indicator">↕</span></th>
+                                        <th>Status Identificado</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="client-list-body">
+                                    <!-- Preenchido dinamicamente via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Coluna de Ações & Console do CRM -->
+                    <div class="right-column">
+                        <!-- Painel de Simuladores -->
+                        <section class="automation-panel">
+                            <div class="panel-header">
+                                <span class="panel-title">Simulador de Campanhas</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.4;">
+                                Dispare campanhas automatizadas em lote baseadas nas regras condicionais de fidelização.
+                            </p>
+                            <div class="btn-group-vertical">
+                                <button class="btn btn-danger-alt" onclick="simularGatilhoLote(1)">
+                                    Simular Campanha Ex-Fiéis
+                                </button>
+                                <button class="btn btn-warning-alt" onclick="simularGatilhoLote(2)">
+                                    Simular Campanha Vegetariano
+                                </button>
+                                <button class="btn btn-info-alt" onclick="simularGatilhoLote(3)">
+                                    Simular Campanha Infantil
+                                </button>
+                            <button class="btn btn-success-alt" onclick="simularGatilhoLote(4)">
+                                    Simular Campanha Fiéis
+                                </button>
+                                <button class="btn" onclick="simularGatilhoLote('todos')">
+                                    Executar Todas as Campanhas
+                                </button>
+                            </div>
+
+                            <!-- Console do CRM -->
+                            <div class="console-container">
+                                <div class="console-header">
+                                    <div class="console-dots">
+                                        <span class="console-dot"></span>
+                                        <span class="console-dot"></span>
+                                        <span class="console-dot"></span>
+                                    </div>
+                                    <span>crm-automation-engine.log</span>
+                                    <button style="background:transparent; border:none; color:var(--color-text-muted); cursor:pointer;" onclick="crmConsole.clear()" title="Limpar console">🧹</button>
+                                </div>
+                                <div class="console-logs" id="console-logs">
+                                    <!-- Logs de simulação vão aparecer aqui -->
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            </div><!-- /view-dashboard -->
+
+
+            <!-- =============================== -->
+            <!-- ABA 2: ANÁLISES                 -->
+            <!-- =============================== -->
+            <div id="view-analytics" class="hidden-view">
+
+                <!-- KPIs de Análise -->
+                <section class="kpi-grid" id="analytics-kpi-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-title">Ticket Médio Geral</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value text-primary" id="an-ticket-medio">R$ 0</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-title">Média Compras/Mês</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value" id="an-media-compras">0</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-title">% Clientes Inativos</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value text-danger" id="an-pct-inativos">0%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-title">🏆 Categoria Campeã</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value-sm text-success" id="an-cat-campea">—</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-title">⚠️ Menor Movimentação</span>
+                        <div class="kpi-value-container">
+                            <span class="kpi-value-sm text-warning" id="an-cat-fraca">—</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Grid de Análises -->
+                <div class="analytics-grid">
+
+                    <!-- Bloco 1: Ranking de Categorias -->
+                    <section class="section-panel analytics-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Ranking de Categorias</span>
+                            <div class="rank-sort-toggle">
+                                <button class="rank-sort-btn active" id="rank-sort-clientes" onclick="renderizarRanking('clientes', this)">Por Clientes</button>
+                                <button class="rank-sort-btn" id="rank-sort-receita" onclick="renderizarRanking('receita', this)">Por Receita</button>
+                                <button class="rank-sort-btn" id="rank-sort-ticket" onclick="renderizarRanking('ticket', this)">Ticket Médio</button>
+                            </div>
+                        </div>
+                        <div id="ranking-categorias">
+                            <!-- Preenchido via JS -->
+                        </div>
+                    </section>
+
+                    <!-- Bloco 2: Distribuição de Perfis CRM -->
+                    <section class="section-panel analytics-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Distribuição de Perfis CRM</span>
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">Base: 100 clientes</span>
+                        </div>
+                        <div id="grafico-perfis">
+                            <!-- Preenchido via JS -->
+                        </div>
+                    </section>
+
+                    <!-- Bloco 3: Receita por Categoria (barra vertical) -->
+                    <section class="section-panel analytics-panel analytics-panel-wide">
+                        <div class="panel-header">
+                            <span class="panel-title">Receita Total por Categoria (R$)</span>
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">Soma do gasto do mês dos clientes</span>
+                        </div>
+                        <div class="bar-chart-vertical-container" id="grafico-receita-categoria">
+                            <!-- Preenchido via JS -->
+                        </div>
+                    </section>
+
+                    <!-- Bloco 4: Frequência de Compra por Categoria -->
+                    <section class="section-panel analytics-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Frequência Média de Compras</span>
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">Média de compras/mês por categoria</span>
+                        </div>
+                        <div id="grafico-frequencia">
+                            <!-- Preenchido via JS -->
+                        </div>
+                    </section>
+
+                </div><!-- /analytics-grid -->
+
+            </div><!-- /view-analytics -->
+
+        </main>
+    </div>
+
+    <!-- Drawer Lateral: Detalhamento do Cliente -->
+    <div class="drawer" id="details-drawer">
+        <div class="drawer-header">
+            <div>
+                <h2 id="drawer-name" style="font-size: 1.25rem; font-weight: 700;">Nome do Cliente</h2>
+                <p id="drawer-cpf" style="font-size: 0.8rem; color: var(--color-text-secondary); margin-top: 0.15rem;">CPF: 000.000.000-00</p>
+            </div>
+            <button class="drawer-close-btn" onclick="fecharDrawer()">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <div>
+                <h3 class="sidebar-title" style="margin-bottom: 0.5rem;">Histórico de Compras (Inputs)</h3>
+                <div class="customer-detail-card">
+                    <div class="detail-row">
+                        <span class="detail-label">Gasto Últimos 30 Dias:</span>
+                        <span class="detail-val" id="drawer-spend" style="color: var(--color-primary)">R$ 0,00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Dias desde a Última Compra:</span>
+                        <span class="detail-val" id="drawer-days">0 dias</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Categoria Principal:</span>
+                        <span class="detail-val" id="drawer-category">Categoria</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Frequência (Compras/Mês):</span>
+                        <span class="detail-val" id="drawer-frequency">0 compras</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="sidebar-title" style="margin-bottom: 0.5rem;">Avaliação de Regras do CRM</h3>
+                <div id="drawer-rules-triggered">
+                    <!-- Regras ativadas e explicações aparecerão aqui -->
+                </div>
+            </div>
+        </div>
+        <div class="drawer-actions-container" id="drawer-actions">
+            <!-- Ações pontuais -->
+        </div>
+    </div>
+
+    <!-- Container do Simulador de Celulares Flutuantes (Simula Notificações Push) -->
+    <div id="phone-simulation-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
