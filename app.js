@@ -621,6 +621,9 @@ function calcularKPIsAnaliticos() {
     const catFraca = [...cats].sort((a, b) => a.totalClientes - b.totalClientes)[0];
 
     return {
+        totalGasto: totalGasto,
+        totalCompras: totalCompras,
+        clientesAtivos: clientes.length - inativos,
         ticketMedio: totalGasto / clientes.length,
         mediaCompras: totalCompras / clientes.length,
         pctInativos: (inativos / clientes.length) * 100,
@@ -638,10 +641,16 @@ function renderizarAnaliticas() {
     if (!kpis.ticketMedio) return;
 
     // KPIs analíticos
+    document.getElementById("an-faturamento-total").textContent =
+        `R$ ${kpis.totalGasto.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    document.getElementById("an-total-compras").textContent =
+        kpis.totalCompras.toLocaleString("pt-BR");
     document.getElementById("an-ticket-medio").textContent =
         `R$ ${kpis.ticketMedio.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     document.getElementById("an-media-compras").textContent =
         kpis.mediaCompras.toFixed(1);
+    document.getElementById("an-clientes-ativos").textContent =
+        kpis.clientesAtivos.toLocaleString("pt-BR");
     document.getElementById("an-pct-inativos").textContent =
         `${kpis.pctInativos.toFixed(1)}%`;
 

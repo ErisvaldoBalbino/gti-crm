@@ -1236,3 +1236,27 @@ body {
 
 /* Cor de texto primária para KPIs de análise */
 .text-primary { color: var(--color-primary); }
+
+/* Layout específico para os KPIs de Análise em duas linhas (máximo 4 colunas) */
+#analytics-kpi-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+    #analytics-kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #analytics-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #analytics-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
