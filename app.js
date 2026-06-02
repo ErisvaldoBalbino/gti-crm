@@ -287,10 +287,6 @@ function renderizarDashboard() {
                 <div class="client-name">${c.nome}</div>
                 <div class="client-cpf">${c.cpf}</div>
             </td>
-            <td>
-                <span class="category-indicator">${c.categoriaMaisComprada}</span>
-                <div class="favorite-product-desc">${c.produtoFavorito}</div>
-            </td>
             <td class="text-right bold">R$ ${c.totalGastoMes.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
             <td class="text-center ${c.diasSemComprar >= 20 ? 'text-danger bold' : ''}">${c.diasSemComprar} dias</td>
             <td><div class="tags-container">${tagHtml}</div></td>
@@ -471,7 +467,6 @@ function abrirDetalhesCliente(cliente) {
     const daysEl = document.getElementById("drawer-days");
     const categoryEl = document.getElementById("drawer-category");
     const frequencyEl = document.getElementById("drawer-frequency");
-    const favEl = document.getElementById("drawer-favorite");
     const rulesTriggeredEl = document.getElementById("drawer-rules-triggered");
     const actionContainerEl = document.getElementById("drawer-actions");
 
@@ -481,7 +476,6 @@ function abrirDetalhesCliente(cliente) {
     daysEl.textContent = `${cliente.diasSemComprar} dias`;
     categoryEl.textContent = cliente.categoriaMaisComprada;
     frequencyEl.textContent = `${cliente.quantidadeCompras} compras`;
-    favEl.textContent = cliente.produtoFavorito;
 
     // Verificar regras ativas
     const alertas = classificarCliente(cliente);
